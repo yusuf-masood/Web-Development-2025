@@ -1,0 +1,256 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To do list</title>
+    <style>
+
+        h1 { 
+            position: relative;
+            left: 300px;
+            top: 100px;
+        }
+
+        #div_1 {
+            position: relative;
+            left: 300px;
+            top: 100px;
+
+        }
+
+        #text_input {
+            width: 800px;
+            height: 30px;
+            background-color: bisque;
+            border: 0.5px solid black;
+            position: relative;
+            
+            
+            
+        }
+
+        #add_click {
+            width: 50px;
+            height: 36px;
+            background-color: cadetblue;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .remove-image-button{
+            position: absolute;
+            left: 700px;
+            width: 25px;
+            height: 25px;
+            border: 2px solid black;
+
+        }
+
+
+        .check_box_1 {
+            position: relative;
+            margin: 7px;
+            height: 15px;
+            width: 15px;
+            
+        }
+
+
+        .label_check {
+            display: block;
+            margin-bottom: 10px;
+            
+           
+        }
+
+        .task-item input[type="checkbox"]:checked + span {
+            text-decoration: line-through;
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1>ToDo List</h1>
+
+    <div id = "div_1">
+    <input id="text_input" type="text" placeholder="New Task">
+    <button id="add_click" onclick="addTask()">Add</button>
+    
+
+    <ul id="list_one"></ul>
+
+    </div>
+
+    <script>
+        function addTask() {
+            let get_input_text = document.getElementById("text_input");
+            let search_box_value = get_input_text.value;
+
+            if (search_box_value.trim() === "") {
+                alert("Please enter your item");
+                return;
+            }
+
+            var li = document.createElement('li');
+            li.classList.add('task-item');
+
+            var checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+            checkbox.classList.add('checkbox');
+            checkbox.classList.add('check_box_1'); 
+            checkbox.addEventListener('change', function () {
+                li.classList.toggle('completed', this.checked);
+                if (this.checked) {
+                    span.style.textDecoration = "line-through";
+                } else {
+                    span.style.textDecoration = "none";
+                }
+            
+            });
+            li.appendChild(checkbox);
+
+            li.appendChild(document.createTextNode(search_box_value));
+
+            var span = document.createElement('span');
+            span.appendChild(document.createTextNode(search_box_value));
+            li.appendChild(span);
+
+            // var removeButton = document.createElement('button');
+            // removeButton.appendChild(document.createTextNode('Remove'));
+            // removeButton.classList.add('remove_button');
+            // removeButton.onclick = function () {
+            //     li.remove();
+
+            var removeImageButton = document.createElement('img');
+            removeImageButton.src = 'bin.png'; // Set the path to your image
+            removeImageButton.alt = 'Remove'; // Alt text for accessibility
+            removeImageButton.classList.add('remove-image-button'); // Add the 'remove-image-button' class
+            removeImageButton.onclick = function () {
+                li.remove();
+            };
+            li.appendChild(removeImageButton);
+
+            document.getElementById('list_one').appendChild(li);
+
+            text_input.value = "";
+        }
+    </script>
+</body>
+</html>  
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To do list</title>
+    <style>
+        h1 { 
+            position: relative;
+            left: 300px;
+            top: 100px;
+        }
+
+        #div_1 {
+            position: relative;
+            left: 300px;
+            top: 100px;
+        }
+
+        #text_input {
+            width: 800px;
+            height: 30px;
+            background-color: bisque;
+            border: 0.5px solid black;
+            position: relative;
+        }
+
+        #add_click {
+            width: 50px;
+            height: 36px;
+            background-color: cadetblue;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .remove-image-button {
+            position: absolute;
+            left: 700px;
+            width: 25px;
+            height: 25px;
+            border: 2px solid black;
+        }
+
+        .check_box_1 {
+            position: relative;
+            margin: 7px;
+            height: 15px;
+            width: 15px;
+        }
+
+        .label_check {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .task-item input[type="checkbox"]:checked + span {
+            text-decoration: line-through;
+        }
+    </style>
+</head>
+<body>
+    <h1>ToDo List</h1>
+    <div id="div_1">
+        <input id="text_input" type="text" placeholder="New Task">
+        <button id="add_click" onclick="addTask()">Add</button>
+        <ul id="list_one"></ul>
+    </div>
+
+    <script>
+        function addTask() {
+            let get_input_text = document.getElementById("text_input");
+            let search_box_value = get_input_text.value;
+
+            if (search_box_value.trim() === "") {
+                alert("Please enter your item");
+                return;
+            }
+
+            var li = document.createElement('li');
+            li.classList.add('task-item');
+
+            var checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+            checkbox.classList.add('checkbox');
+            checkbox.classList.add('check_box_1'); 
+            checkbox.addEventListener('change', function () {
+                li.classList.toggle('completed', this.checked);
+            });
+            li.appendChild(checkbox);
+
+            var span = document.createElement('span');
+            span.appendChild(document.createTextNode(search_box_value));
+            li.appendChild(span);
+
+            var removeImageButton = document.createElement('img');
+            removeImageButton.src = 'bin.png'; // Set the path to your image
+            removeImageButton.alt = 'Remove'; // Alt text for accessibility
+            removeImageButton.classList.add('remove-image-button'); // Add the 'remove-image-button' class
+            removeImageButton.onclick = function () {
+                li.remove();
+            };
+            li.appendChild(removeImageButton);
+
+            document.getElementById('list_one').appendChild(li);
+
+            text_input.value = "";
+        }
+    </script>
+</body>
+</html> -->
