@@ -1,0 +1,41 @@
+#block_1 {
+    background-color: rgb(217, 202, 202);
+    position: relative;
+    text-align: center;
+
+}
+
+#picture {
+    position: relative;
+    width: 580px;
+    height: 500px;
+    left: 120px ; 
+    box-shadow:  8px 14px 12px rgb(71, 65, 65);
+    cursor: pointer;
+
+}
+
+#figure_1 {
+    text-align: center;
+    font-weight: bold;
+
+}
+
+#block_2 {
+    background-color: cadetblue;
+    padding: 30px;
+    text-align: center;
+}
+
+#button_1{
+    background-color: rgb(219, 215, 213);
+      font-weight: bold;
+    border-style: groove;
+    border: 3px solid black;
+    border-radius: 20px;  
+
+}
+
+#h4_1 {
+    font-size: larger;
+}
